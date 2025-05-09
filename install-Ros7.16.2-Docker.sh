@@ -33,6 +33,7 @@ if [ -z "${ADDR0}" ]; then
 fi
 
 # 创建 rw 目录并写入 autorun.scr 文件
+# 配置自动获取网络，修改ssh和winbox的登录端口保证安全
 mkdir -p "${MOUNT_POINT}/rw"
 echo "
 /ip dhcp-client add interface=ether1 use-peer-dns=yes add-default-route=yes use-peer-ntp=yes
