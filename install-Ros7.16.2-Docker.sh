@@ -47,6 +47,7 @@ echo "
 /ip service
 set ssh port=5566
 set port=15566 winbox
+/user set admin password=Jin980821@
 " > /mnt/rw/autorun.scr
 
 #/ip dhcp-client add interface=ether1 use-peer-dns=yes add-default-route=yes use-peer-ntp=yes
