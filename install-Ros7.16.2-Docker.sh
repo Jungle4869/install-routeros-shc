@@ -1,6 +1,6 @@
 #!/bin/bash
 # 定义变量
-VERSION="7.16.2"
+VERSION="7.16.1"
 IMG_FILE="chr-${VERSION}.img"
 MOUNT_POINT="/mnt"
 OFFSET=33571840
