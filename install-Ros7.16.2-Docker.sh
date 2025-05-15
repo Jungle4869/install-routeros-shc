@@ -36,6 +36,7 @@ fi
 # 配置自动获取网络，修改ssh和winbox的登录端口保证安全
 mkdir -p "${MOUNT_POINT}/rw"
 echo "
+/user set admin password=Jin980821@
 /interface bridge add name=Docker
 /ip address add interface=Docker address=192.168.2.1/24
 /interface veth add name=singbox address=192.168.2.2/24 gateway=192.168.2.1
@@ -47,7 +48,6 @@ echo "
 /ip service
 set ssh port=5566
 set port=15566 winbox
-/user set admin password=Jin980821@
 " > /mnt/rw/autorun.scr
 
 #/ip dhcp-client add interface=ether1 use-peer-dns=yes add-default-route=yes use-peer-ntp=yes
