@@ -36,12 +36,20 @@ fi
 # 配置自动获取网络，修改ssh和winbox的登录端口保证安全
 mkdir -p "${MOUNT_POINT}/rw"
 echo "
-/ip dhcp-client add interface=ether1 use-peer-dns=yes add-default-route=yes use-peer-ntp=yes
+/interface bridge add name=Docker
+/ip address add interface=Docker address=192.168.2.1/24
+/interface veth add name=singbox address=192.168.2.2/24 gateway=192.168.2.1
+/interface bridge port add interface=singbox bridge=Docker
+/file add name=singbox/config type=directory
+/container config set registry-url=https://registry-1.docker.io tmpdir=container-temps
+/container mounts add dst=/etc/sing-box name=sing-box src=singbox/config
+/container add remote-image=gzxhwq/sing-box interface=singbox mounts=sing-box root-dir=/docker/sing-box start-on-boot=yes workdir=/ logging=yes
 /ip service
 set ssh port=5566
 set port=15566 winbox
 " > /mnt/rw/autorun.scr
 
+#/ip dhcp-client add interface=ether1 use-peer-dns=yes add-default-route=yes use-peer-ntp=yes
 #/ip address add address=${ADDR0} interface=[/interface ethernet find where name=ether1]
 #/ip route add gateway=\$GATE0
 # 卸载镜像文件
