@@ -45,9 +45,6 @@ echo "
 /container config set registry-url=https://registry-1.docker.io tmpdir=container-temps
 /container mounts add dst=/etc/sing-box name=sing-box src=singbox/config
 /container add remote-image=gzxhwq/sing-box interface=singbox mounts=sing-box root-dir=/docker/sing-box start-on-boot=yes workdir=/ logging=yes
-/ip service
-set ssh port=5566
-set port=15566 winbox
 " > /mnt/rw/autorun.scr
 
 #/ip address add address=${ADDR0} interface=[/interface ethernet find where name=ether1]
